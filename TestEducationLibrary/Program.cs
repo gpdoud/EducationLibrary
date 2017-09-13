@@ -33,7 +33,7 @@ namespace TestEducationLibrary {
 			chgName.LastName = "Phense";
 			rc = StudentCollection.Update(chgName);
 
-			rc = StudentCollection.Delete(11);
+			rc = StudentCollection.Delete(12);
 		}
 
 		static void Main(string[] args) {

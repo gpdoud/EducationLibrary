@@ -109,10 +109,18 @@ namespace EducationLibrary {
 				Console.WriteLine("Connection did not open.");
 				return false;
 			}
+			// This is a parameterized query in SQL
+			// Note the @id parameter in the WHERE clause
+			// when a query contains a parameter
+			// a SqlParameter must be added to the SqlCommand
+			// in the Parameters collection with the value
+			// for the parameter.
 			var sql = $"DELETE from Student" +
-						$" WHERE ID = {id}";
+						$" WHERE ID = @id";
 
 			SqlCommand cmd = new SqlCommand(sql, connection);
+			// this is how you add a parameter to the SqlCommand object
+			cmd.Parameters.Add(new SqlParameter("@id", id));
 			var recsAffected = cmd.ExecuteNonQuery();
 			return (recsAffected == 1);
 		}
